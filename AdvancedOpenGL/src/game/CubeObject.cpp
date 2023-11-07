@@ -13,8 +13,9 @@ void CubeObject::update() {
 }
 
 void CubeObject::draw(Shader& shader) {
-  shader.setMatrix4("mv_matrix", transform);
-  cubeMesh->draw();
+
+    shader.setMatrix4("mv_matrix", transform);
+    cubeMesh->drawPatches(); 
 }
 
 void CubeObject::setPosition(float xP, float yP) {
@@ -23,6 +24,14 @@ void CubeObject::setPosition(float xP, float yP) {
   transform = computeTransform();
 }
 
+void CubeObject::setRotation(float angle)
+{
+	rotationAngle = angle;
+	transform = computeTransform();
+}
+
 Matrix4 CubeObject::computeTransform() {
-  return Matrix4::createTranslation(Vector3(x, y, -4.0f));
+    Matrix4 translation = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f));
+    Matrix4 rotation = Matrix4::createRotationY(rotationAngle);
+    return translation * rotation;
 }

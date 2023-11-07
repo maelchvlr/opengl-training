@@ -26,8 +26,11 @@ private:
     Game *game;
     GLuint vao;
     GLuint buffer;
-    Matrix4 transform[24];
+    Matrix4 transform[2];
     Matrix4 projection;
+    int colorModeCube0 = 0; 
+    int colorModeCube1 = 1; 
+    float frequency = 10;
 
     Shader shader;
 };

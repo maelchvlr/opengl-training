@@ -2,7 +2,7 @@
 // Created by gaetz on 04/12/2019.
 //
 
-#include "Scene_008_SpinningCubes.h"
+#include "Scene_026_shaderTrain.h"
 #include "../engine/Timer.h"
 #include "../engine/MacroUtils.h"
 
@@ -12,20 +12,20 @@
 #include <random>
 
 
-Scene_008_SpinningCubes::Scene_008_SpinningCubes()
+Scene_026_shaderTrain::Scene_026_shaderTrain()
 {
 }
 
-Scene_008_SpinningCubes::~Scene_008_SpinningCubes() {
+Scene_026_shaderTrain::~Scene_026_shaderTrain() {
     clean();
 }
 
-void Scene_008_SpinningCubes::setGame(Game *_game) {
+void Scene_026_shaderTrain::setGame(Game* _game) {
     game = _game;
 }
 
-void Scene_008_SpinningCubes::load() {
-    std::srand((int) std::time(nullptr));
+void Scene_026_shaderTrain::load() {
+    std::srand((int)std::time(nullptr));
     Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
 
     glGenVertexArrays(1, &vao);
@@ -100,30 +100,30 @@ void Scene_008_SpinningCubes::load() {
     shader = Assets::getShader(SHADER_ID(SHADER_NAME));
 }
 
-void Scene_008_SpinningCubes::clean() {
+void Scene_026_shaderTrain::clean() {
     glDeleteVertexArrays(1, &vao);
 }
 
-void Scene_008_SpinningCubes::pause() {
+void Scene_026_shaderTrain::pause() {
 }
 
-void Scene_008_SpinningCubes::resume() {
+void Scene_026_shaderTrain::resume() {
 }
 
-void Scene_008_SpinningCubes::handleEvent(const InputState &inputState) {
+void Scene_026_shaderTrain::handleEvent(const InputState& inputState) {
 }
 
-void Scene_008_SpinningCubes::update(float dt) {
+void Scene_026_shaderTrain::update(float dt) {
 
     static thread_local std::mt19937 generator(std::random_device{}());
     std::uniform_int_distribution<int> distribution(0, 10);
 
     float timeValue = Timer::getTimeSinceStart();
 
-  
+
     float horizontalMovement = sin(0.5f * timeValue) * 5.0f;
 
-        // Only translate along the X-axis for horizontal movement
+    // Only translate along the X-axis for horizontal movement
     transform[0] = Matrix4::createTranslation(Vector3(horizontalMovement, 0.0f, -10.0f));
     transform[1] = Matrix4::createTranslation(Vector3(-horizontalMovement, 0.0f, -10.0f));
 
@@ -147,7 +147,7 @@ void Scene_008_SpinningCubes::update(float dt) {
 
 }
 
-void Scene_008_SpinningCubes::draw()
+void Scene_026_shaderTrain::draw()
 {
     static const GLfloat bgColor[] = { 210.0f, 210.0f, 207.0f, 0.0f };
     glClearBufferfv(GL_COLOR, 0, bgColor);
@@ -161,7 +161,7 @@ void Scene_008_SpinningCubes::draw()
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
     // Drawing Cube 1 with its specific settings
-    shader.setInteger("colorMode", colorModeCube1); 
+    shader.setInteger("colorMode", colorModeCube1);
     shader.setMatrix4("mv_matrix", transform[1]);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }

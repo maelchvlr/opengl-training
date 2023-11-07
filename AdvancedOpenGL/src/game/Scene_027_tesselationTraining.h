@@ -2,8 +2,8 @@
 // Created by gaetz on 04/12/2019.
 //
 
-#ifndef Scene_007_SpinningCube_H
-#define Scene_007_SpinningCube_H
+#ifndef Scene_027_tesselationTraining_H
+#define Scene_027_tesselationTraining_H
 
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
@@ -12,10 +12,10 @@
 
 class CubeMesh;
 
-class Scene_007_SpinningCube : public Scene {
+class Scene_027_tesselationTraining : public Scene {
 public:
-    Scene_007_SpinningCube();
-    ~Scene_007_SpinningCube();
+    Scene_027_tesselationTraining();
+    ~Scene_027_tesselationTraining();
     void load();
     void clean();
     void pause();
@@ -41,4 +41,4 @@ private:
 };
 
 
-#endif //Scene_007_SpinningCube_H
+#endif //Scene_027_tesselationTraining_H

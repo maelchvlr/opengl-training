@@ -4,7 +4,7 @@
 #include "../engine/Assets.h"
 #include "../engine/Scene.h"
 #include PATH(SCENE_NAME,EXT)
-//#include "Scene_005_Tessellation.h"
+#include "Scene_005_Tessellation.h"
 
 Game::Game() : isRunning(false),
                windowWidth(0),

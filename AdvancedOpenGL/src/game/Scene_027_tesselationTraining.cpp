@@ -1,8 +1,6 @@
-//
-// Created by gaetz on 04/12/2019.
-//
 
-#include "Scene_007_SpinningCube.h"
+
+#include "Scene_027_tesselationTraining.h"
 #include "../engine/Timer.h"
 #include "../engine/MacroUtils.h"
 
@@ -13,19 +11,19 @@
 #include "CubeMesh.h"
 
 
-Scene_007_SpinningCube::Scene_007_SpinningCube()
+Scene_027_tesselationTraining::Scene_027_tesselationTraining()
 {
 }
 
-Scene_007_SpinningCube::~Scene_007_SpinningCube() {
+Scene_027_tesselationTraining::~Scene_027_tesselationTraining() {
     clean();
 }
 
-void Scene_007_SpinningCube::setGame(Game *_game) {
+void Scene_027_tesselationTraining::setGame(Game *_game) {
     game = _game;
 }
 
-void Scene_007_SpinningCube::load() {
+void Scene_027_tesselationTraining::load() {
     std::srand((int) std::time(nullptr));
 
     // Loading all the shaders
@@ -47,21 +45,21 @@ void Scene_007_SpinningCube::load() {
     cubes.emplace_back(0.0f, 0.0f, cubeMesh);
 }
 
-void Scene_007_SpinningCube::clean() {
+void Scene_027_tesselationTraining::clean() {
     cubeMesh->clean();
     delete cubeMesh;
 }
 
-void Scene_007_SpinningCube::pause() {
+void Scene_027_tesselationTraining::pause() {
 }
 
-void Scene_007_SpinningCube::resume() {
+void Scene_027_tesselationTraining::resume() {
 }
 
-void Scene_007_SpinningCube::handleEvent(const InputState &inputState) {
+void Scene_027_tesselationTraining::handleEvent(const InputState &inputState) {
 }
 
-void Scene_007_SpinningCube::update(float dt) {
+void Scene_027_tesselationTraining::update(float dt) {
     // Stock the elapsed time since the beginning of the script
     elapsedTime += dt;
 
@@ -78,7 +76,7 @@ void Scene_007_SpinningCube::update(float dt) {
     outer = (cos(elapsedTime * 1.2)+1)*3;
 }
 
-void Scene_007_SpinningCube::draw() {
+void Scene_027_tesselationTraining::draw() {
     // Setting up the background
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
